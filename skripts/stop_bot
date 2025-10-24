@@ -1,0 +1,11 @@
+#!/bin/bash
+PID_FILE="/tmp/telegram_bot.pid"
+
+if [ ! -f "$PID_FILE" ]; then
+    echo "PID-файл не найден, бот не запущен?"
+    exit 1
+fi
+
+PID=$(cat "$PID_FILE")
+kill -9 $PID && rm -f "$PID_FILE"
+echo "Бот остановлен"
